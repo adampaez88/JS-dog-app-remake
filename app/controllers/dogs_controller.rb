@@ -6,6 +6,11 @@ class DogsController < ApplicationController
         render json: {dogs: dogs}, include: [:comments]
     end
 
+    def show
+        dog = Dog.find(params[:id])
+        render json: dog
+    end
+
     def create
         dog = Dog.create(
             breed: params[:breed],
