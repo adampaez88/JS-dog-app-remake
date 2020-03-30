@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: {users: users}
+        render json: {users: users}, include: [:comments]
     end
 
     def create

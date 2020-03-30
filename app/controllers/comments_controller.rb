@@ -2,14 +2,14 @@ class CommentsController < ApplicationController
     before_action :authenticate, only: [:create]
     def index 
         comments = Comment.all
-        render json: {comments: comments}, include: [:user]
+        render json: {comments: comments}
     end
 
     def create
         comment = Comment.create(
             content: params[:content],
             dog_id: params[:dog_id],
-            user_id: @user
+            user: @user
         )
         render json: {comment: comment}
     end
